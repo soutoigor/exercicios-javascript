@@ -200,21 +200,27 @@ pessoa.apresentacao = function (){
 
 
 	//nome
-	if(pessoa.sexo == "Feminino" || pessoa.sexo == "feminino"){
+	pessoa.sexo == "Feminino" || pessoa.sexo == "feminino" ? nome = "a" : nome;
+		/*	
+		if(pessoa.sexo == "Feminino" || pessoa.sexo == "feminino"){
 		nome = "a";
-	}
+	}*/
 	
 	//idade
+	pessoa.idade == 1 ? idade = "ano" : idade;
+	/*
 	if(pessoa.idade == 1){
 		idade = "ano";
-	}
+	}*/
 
 	//metros caminhados
+	pessoa.caminhouQuantosMetros == 1 ? metros = "metro" : metros;
+	/*
 	if(pessoa.caminhouQuantosMetros == 1){
 		metros ="metro";
 	}
-
-	return "Olá, eu sou " + nome + " , tenho " + pessoa.idade + " " + idade + ", " + pessoa.altura +"m, meu peso é " + pessoa.peso + "Kg e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + " " + metros + "!" ;
+*/
+	return "Olá, eu sou " + nome + " " + pessoa.nome + " " + pessoa.sobrenome + " , tenho " + pessoa.idade + " " + idade + ", " + pessoa.altura +"m, meu peso é " + pessoa.peso + "Kg e, só hoje, eu já caminhei " + pessoa.caminhouQuantosMetros + " " + metros + "!" ;
 
 
 }
