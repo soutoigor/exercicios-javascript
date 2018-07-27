@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <title>Challenge-05</title>
+
+</head>
+
+<body>
+    <script>
+        /*
+        Crie uma variável qualquer, que receba um array com alguns valores aleatórios
+        - ao menos 5 - (fica por sua conta os valores do array).
+        */
+        var randArray = [6, "seis", true, false, 3];
+
+        /*
+        Crie uma função que receba um array como parâmetro, e retorne esse array.
+        */
+        function myFunc(arr) {
+            return arr;
+        }
+
+        /*
+        Imprima o segundo índice do array retornado pela função criada acima.
+        */
+        myFunc(randArray)[1];
+        //"seis"
+
+        /*
+        Crie uma função que receba dois parâmetros: o primeiro, um array de valores; e o
+        segundo, um número. A função deve retornar o valor de um índice do array que foi passado
+        no primeiro parâmetro. O índice usado para retornar o valor, deve ser o número passado no
+        segundo parâmetro.
+        */
+        function arrIndex(arr, num){
+            return arr[num];
+        }
+
+        /*
+        Declare uma variável que recebe um array com 5 valores, de tipos diferentes.
+        */
+        var fiveArr = ["one" ,"two", "three", "four", "five"];
+
+        /*
+        Invoque a função criada acima, fazendo-a retornar todos os valores do último
+        array criado.
+        */
+        arrIndex(fiveArr,0);
+        //"one"
+        arrIndex(fiveArr,1);
+        //"two"
+        arrIndex(fiveArr,2);
+        //"three"
+        arrIndex(fiveArr,3);
+        //"four"
+        arrIndex(fiveArr,4);
+        //"five"    
+
+
+        /*
+        Crie uma função chamada `book`, que recebe um parâmetro, que será o nome do
+        livro. Dentro dessa função, declare uma variável que recebe um objeto com as
+        seguintes características:
+        - esse objeto irá receber 3 propriedades, que serão nomes de livros;
+        - cada uma dessas propriedades será um novo objeto, que terá outras 3
+        propriedades:
+            - `quantidadePaginas` - Number (quantidade de páginas)
+            - `autor` - String
+            - `editora` - String
+        - A função deve retornar o objeto referente ao livro passado por parâmetro.
+        - Se o parâmetro não for passado, a função deve retornar o objeto com todos
+        os livros.
+        */
+        function book(bookName1){
+            var books = {
+                book1: {
+                    numPages: 361,
+                    author: "Igor Souto",
+                    publisher: "Abril"
+                },
+                book2: {
+                    numPages: 420,
+                    author: "Jose Cintra",
+                    publisher: "Panini"
+                },
+                book3: {
+                    numPages: 250,
+                    author: "Luigi Comenale",
+                    publisher: "Shonen Jump"
+                }
+            };
+            if(bookName1 == books.book1){
+                return books.book1;
+            }
+        }
+
+        /*
+        Usando a função criada acima, imprima o objeto com todos os livros.
+        */
+        // ?
+
+        /*
+        Ainda com a função acima, imprima a quantidade de páginas de um livro qualquer,
+        usando a frase:
+        "O livro [NOME_DO_LIVRO] tem [X] páginas!"
+        */
+        // ?
+
+        /*
+        Ainda com a função acima, imprima o nome do autor de um livro qualquer, usando
+        a frase:
+        "O autor do livro [NOME_DO_LIVRO] é [AUTOR]."
+        */
+        // ?
+
+        /*
+        Ainda com a função acima, imprima o nome da editora de um livro qualquer, usando
+        a frase:
+        "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
+        */
+        // ?
+    </script>
+</body>
+
+</html>
