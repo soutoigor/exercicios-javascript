@@ -11,7 +11,10 @@ equivalente booleano para o valor passado no argumento for `true`, ou `false`
 para o contrário.
 */
 var isTruthy = function(a){
-    if(a){return true;} else {return false;}
+   // if(a){return true;} else {return false;}
+   // if(a){return true;} return false;
+   // return a ? true : false;
+   return !!a;
 };
 
 // Invoque a função criada acima, passando todos os tipos de valores `falsy`.
@@ -134,12 +137,12 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 citado acima, no lugar de "pessoas".
 */
 carro.adicionaPessoasCarro = function(numPessoas){
-    
-    if(carro.quantidadePessoas >= carro.assentos){
+  
+    var pessoasRestantes = carro.assentos - carro.quantidadePessoas;
+
+    if(carro.quantidadePessoas === carro.assentos ){
         return "O carro já está lotado!";
     }
-    
-    var pessoasRestantes = carro.assentos - carro.quantidadePessoas;
 
     if(numPessoas <=  pessoasRestantes){
     carro.quantidadePessoas += numPessoas;
@@ -148,10 +151,12 @@ carro.adicionaPessoasCarro = function(numPessoas){
     if(numPessoas > pessoasRestantes){
         var pessoasPlural = "pessoas";
         pessoasRestantes == 1 ? pessoasPlural = "pessoa" : pessoasPlural;
-
         return "só cabem mais " + pessoasRestantes + " " + pessoasPlural + "!";
     }
 
+    if(numPessoas <=  pessoasRestantes){
+    carro.quantidadePessoas += numPessoas;
+    }
     return "Já temos " + carro.quantidadePessoas + " pessoas no carro!";
 
 }
