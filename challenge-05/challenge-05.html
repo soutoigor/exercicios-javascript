@@ -71,54 +71,60 @@
         - Se o parâmetro não for passado, a função deve retornar o objeto com todos
         os livros.
         */
-        function book(bookName1){
-            var books = {
-                book1: {
-                    numPages: 361,
-                    author: "Igor Souto",
-                    publisher: "Abril"
+        function book(bookName){
+            
+            var allBooks = {
+                "Biblia Satanica": {
+                    quantidadePaginas: 320,
+                    autor: "Igor Souto",
+                    editora: "Shonen Jump" 
                 },
-                book2: {
-                    numPages: 420,
-                    author: "Jose Cintra",
-                    publisher: "Panini"
+
+                "Manual Wicca": {
+                    quantidadePaginas: 420,
+                    autor: "Giovanna Oliveira",
+                    editora: "Abril"
                 },
-                book3: {
-                    numPages: 250,
-                    author: "Luigi Comenale",
-                    publisher: "Shonen Jump"
-                }
+
+                "Comportamentos Duzomi": {
+                    quantidadePaginas: 500,
+                    autor: "Felipe Saturnino",
+                    editora: "Shonen Jump"
+                }      
             };
-            if(bookName1 == books.book1){
-                return books.book1;
-            }
+
+            return !bookName ? allBooks : allBooks[bookName];
         }
 
         /*
         Usando a função criada acima, imprima o objeto com todos os livros.
         */
-        // ?
+        // 
+        book();
 
         /*
         Ainda com a função acima, imprima a quantidade de páginas de um livro qualquer,
         usando a frase:
         "O livro [NOME_DO_LIVRO] tem [X] páginas!"
         */
-        // ?
-
+        // 
+        console.log("O livro Biblia Satanica tem " + book("Biblia Satanica").quantidadePaginas + " páginas!" );
+        
         /*
         Ainda com a função acima, imprima o nome do autor de um livro qualquer, usando
         a frase:
         "O autor do livro [NOME_DO_LIVRO] é [AUTOR]."
         */
-        // ?
+        // 
+        console.log("A autora do livro Manual Wicca é " + book("Manual Wicca").autor + "."  );
 
         /*
         Ainda com a função acima, imprima o nome da editora de um livro qualquer, usando
         a frase:
         "O livro [NOME_DO_LIVRO] foi publicado pela editora [NOME_DA_EDITORA]."
         */
-        // ?
+        // 
+        console.log("O livro Comportamentos Duzomi foi publicado pela editora " + book("Comportamentos Duzomi").editora + ".");
     </script>
 </body>
 
