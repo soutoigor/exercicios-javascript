@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>challenge-10</title>
+    <title>challenge-11</title>
     <meta charset="utf-8">
 </head>
 
@@ -60,11 +60,10 @@ Após a função, mostrar a mensagem no console:
 'The person has more than 25 years old? [TRUE/FALSE]'
 */
 function moreThan(age){
-    return age > person.age ? true : false; 
+    return person.age > age; 
 }
-console.log(moreThan(24));
 
-console.log('The person has more than 25 years old? ' + (person.age > 25) );
+console.log('The person has more than 25 years old? ', moreThan(25) );
 
 /*
 Faça um loop de 0 a 20, que adicione cada número como um item de um
@@ -90,12 +89,12 @@ Mostrar no console os números do array.
 numbers = [];
 
 for(i = 0; i <= 20; i++ ){
-    if(i % 2 !== 0){continue;}
+    if(i % 2 === 0){continue;}
 
     numbers.push(i);
 }
 
-console.log( 'Pares de 0 a 20: ' + numbers );
+console.log( 'Ímpares de 0 a 20: ' + numbers );
 
 })()
 
