@@ -113,9 +113,16 @@
             no formato abaixo:
                 "[PROPRIEDADE]: [VALOR]"
             */
-            for (var i = 0; i < books.length; i++) {
-                console.log(books[i]);
+        
+            for(var i = 0; i < books.length; i++){
+                for(var prop in books[i]){
+                    console.log(prop + ': ' + books[i][prop]  );
+                }
             }
+           
+            
+
+            
 
 
             /*
@@ -138,7 +145,7 @@
             */
             // ?
 
-            console.log('\nAgora em ordem alfabética: \n', myName.sort().join(''));
+            console.log('\nAgora em ordem alfabética: \n', myName.sort());
             /*
             Mostre todos os itens do array acima, odenados alfabéticamente.
             */
