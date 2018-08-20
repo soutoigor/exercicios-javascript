@@ -1,3 +1,5 @@
+(function(){
+    'use strict';
 /*
 1. Envolva todo o conteúdo desse desafio em uma IIFE.
 2. Adicione a diretiva 'use strict';
@@ -14,7 +16,13 @@ Ex: no caso do nome ser "Fernando", deve mostrar as frases:
 E assim por diante, até a última.
 */
 console.log( 'As letras do seu nome:' );
-// ?
+
+var name = 'igor';
+
+console.log(name.charAt(0) + ' é a ' + (name.indexOf('i')+1) + 'º letra do meu nome.');
+console.log(name.charAt(1) + ' é a ' + (name.indexOf('g')+1) + 'º letra do meu nome.');
+console.log(name.charAt(2) + ' é a ' + (name.indexOf('o')+1) + 'º letra do meu nome.');
+console.log(name.charAt(3) + ' é a ' + (name.indexOf('r')+1) + 'º letra do meu nome.');
 
 /*
 - Declare uma variável chamada `fullName`, que receba seu nome completo,
@@ -29,8 +37,23 @@ curso para fazer isso funcionar corretamente :)
 console.log para cada formato.
 */
 console.log( '\nNome convertido à partir de um slug:' );
-// ?
 
+var fullName = 'igor-souto-de-souza';
+
+function captalizeName(name){
+
+    var capName = name.charAt(0).toUpperCase();
+
+
+
+    return capName;
+
+}
+
+
+
+console.log(fullName);
+console.log(captalizeName(fullName));
 /*
 - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
 cada nome por vírgula. Entre o penúltimo e o último nome, o separador deve
@@ -68,3 +91,4 @@ Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
 */
 console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
 // ?
+})();

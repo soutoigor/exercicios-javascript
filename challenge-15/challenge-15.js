@@ -27,14 +27,15 @@
     this.name = name;
     this.lastName = lastName;
     this.age = age;
-    this.getFullName = function () {
+    this.getFullName = function getFullName() {
       return this.name + ' ' + this.lastName;
     }
-    this.getAge = function () {
+    this.getAge = function getAge() {
       return this.age;
     }
-    this.addAge = function () {
-      return this.age += arguments[0];
+    this.addAge = function addAge() {
+      this.age += arguments[0];
+      return this;
     }
   }
 
@@ -82,11 +83,11 @@ console.log(felipe.getFullName());
 
   giovanna.addAge(1);
   igor.addAge(3);
-  felipe.addAge(2);
+  igor.addAge(3);
 
-  console.log(giovanna.getFullName() + ' agora tem ' + giovanna.getAge() + ' anos.');
-  console.log(igor.getFullName() + ' agora tem ' + igor.getAge() + ' anos.');
-  console.log(felipe.getFullName() + ' agora tem ' + felipe.getAge() + ' anos.');
+  console.log(giovanna.getFullName() + ' agora tem ' + giovanna.addAge(1).getAge() + ' anos.');
+  console.log(igor.getFullName() + ' agora tem ' +   igor.addAge(3).getAge()  + ' anos.');
+  console.log(felipe.getFullName() + ' agora tem ' +   igor.addAge(3).getAge() + ' anos.');
 
 
 })();
