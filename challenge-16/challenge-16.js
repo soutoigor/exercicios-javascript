@@ -105,5 +105,20 @@ de qualquer tamanho, escrito de qualquer forma.
 Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
 */
 console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
+    
+    var myName = 'Igor';
+        
+    myName = myName.split("");
+
+    for(var i = 0; i < myName.length; i++){
+
+	i % 2 == 0 ? myName[i] = myName[i].toUpperCase() : myName[i] = myName[i].toLowerCase();
+
+}
+    myName = myName.join("");
+    
+    console.log(myName);
+    
+    
 // ?
 })();
