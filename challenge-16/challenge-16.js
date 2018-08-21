@@ -42,11 +42,16 @@ var fullName = 'igor-souto-de-souza';
 
 function captalizeName(name){
 
-    var capName = name.charAt(0).toUpperCase();
+    name = name.split('-').join(' ');
+    console.log(name.charAt((name.indexOf(' ')+1)).toUpperCase() );
+
+   
 
 
 
-    return capName;
+
+
+    return name;
 
 }
 
