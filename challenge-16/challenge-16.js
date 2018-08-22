@@ -47,9 +47,7 @@ newFullName = newFullName.map(function(item){
 
     return item.charAt(0).toUpperCase() + item.slice(1);
 
-    });
-
-newFullName = newFullName.join(' ');
+    }).join(' ');
   
     console.log(newFullName);
     
@@ -73,10 +71,8 @@ var newArrNames = arrNames.reduce(function(acumulado,atual,index){
 
     return acumulado + separator + atual;    
 
-});
+}).concat(" são meus amigos");
   
-
-
 console.log(newArrNames);
 
 /*
