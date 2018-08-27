@@ -95,42 +95,38 @@ Use um console.log para cada mês, usando a frase:
 */
 console.log( '\nMeses representados por números:' );
 
-/* function getMonthNumber(month){
+ function getMonthNumber(month){
+	var months = {
 
-	switch(month){
+		'janeiro': '01',
+		'fevereiro': '02',
+		'março': '03',
+		'abril': '04',
+		'maio': '05',
+		'junho': '06',
+		'julho': '07',
+		'agosto': '08',
+		'setembro': '09',
+		'outubro': '10',
+		'novembro': '11',
+		'dezembro': '12'
 
-		case /janeiro/gi:
-		return '01';
-		case /fevereiro/gi:
-		return '02';
-		case /março/gi:
-		return '03';
-		case /abril/gi:
-		return '04';
-		case /maio/gi:
-		return '05';
-		case /junho/gi:
-		return '06';
-		case /julho/gi:
-		return '07';
-		case /agosto/gi:
-		return '08';
-		case /setembro/gi:
-		return '09';
-		case /outubro/gi:
-		return '10';
-		case /novembro/gi:
-		return '11';
-		case /dezembro/gi:
-		return '12';
+	};
 
-
-
-	}
+	return months[month];
 
 }
 
- */
+
+console.log('O mês de Março é representado pelo número ' + getMonthNumber('março') + '.');
+console.log('O mês de Setembro é representado pelo número ' + getMonthNumber('setembro') + '.');
+console.log('O mês de Dezembro é representado pelo número ' + getMonthNumber('dezembro') + '.');
+
+
+
+
+
+ 
 
 /*
 Agora, declare uma variável chamada `regexDate` que irá receber a expressão
@@ -141,7 +137,10 @@ Com o que vimos até agora, você consegue fazer :D
 Mostre a regex no console.
 */
 console.log( '\nRegex que vai fazer o match com as datas do texto:' );
-// ?
+
+var regexDate = /(\d{2}) (de) (junho|julho) (de) (\d{4})/gmi;
+
+console.log(regexDate);
 
 /*
 Agora crie a função que irá fazer o replace dos dados. A função será chamada
@@ -151,5 +150,19 @@ Após criar a função, faça o replace das datas no texto, mostrando no
 console o resultado.
 */
 console.log( '\nReplace de datas:' );
-// ?
+
+function replaceDate(text){
+
+	var result = text.replace( regexDate, function(match, $1, $2, $3, $4, $5){
+
+		return $1 + '/' + getMonthNumber($3) + '/' + $5;
+
+	} );
+
+	return result;
+
+}
+
+console.log(replaceDate(text));
+
 })();
