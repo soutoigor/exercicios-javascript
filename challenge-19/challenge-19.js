@@ -93,9 +93,13 @@
 
     function hasClass(markup, cssClass){
 
-        var testClass = /<\w+\sclass="(\w+)\s?(\w+)?">/gm;
+       // var testClass = /<\w+\sclass="(\w+)\s?(\w+)?">/gm;
+      //  var testClass = /("\w+\s?(\w+)?">?$)/gm;
 
-    return testClass.test(cssClass);
+        var testClass = new RegExp('[^<' + cssClass + '>](' + cssClass + ')','gm');
+        
+
+    return testClass.test(markup);
        
         
     }
