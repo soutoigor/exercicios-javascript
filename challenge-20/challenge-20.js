@@ -82,18 +82,20 @@ $button.addEventListener('click', function(e){
     }
     if(!$message.value){
         alert('Preencha a mensagem!');
+        
     }
     if(!isValidEmail($inputEmail)){
         alert('Entre com um e-mail válido!');
+        return;
     }
     
     var confirmation = confirm('Tem certeza que deseja enviar o formulário?');
     
     if(confirmation){
-        alert('Enviado com sucesso!');
+        alert('Enviado com sucesso! :D');
     }
     else{
-        alert('Não enviado');
+        alert('Não enviado :c');
     }
 
 });
@@ -142,8 +144,11 @@ Alguns e-mails inválidos:
 
 function isValidEmail(email){
 
+    var regex = /\w+?@[a-zA-Z]+?\.\w{2,3}.?\w{2,3}?/g;
 
-return false;
+    return regex.test(email);
+
+
 }
 
 })(window, document);
