@@ -16,7 +16,8 @@ resultado à uma variável chamada `username`. Se o usuário não digitar um
 nome, `username` deve receber "Desconhecido".
 Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
 */
-var name = prompt('Qual seu nome?');
+var name = prompt('Qual seu nome?') || "Desconhecido";
+alert('Bem vindo ' + name + '!');
 
 /*
 Agora, pergunte ao usuário "Qual o seu e-mail?", atribuindo o resultado à
@@ -69,34 +70,34 @@ Adicione um listener de evento de click ao botão que faça o seguinte:
 - Se o campo de "Email" for inválido, mostrar:
     - "Entre com um e-mail válido!"
 */
-
+debugger;
 $button.addEventListener('click', function(e){
 
     e.preventDefault();
 
     if(!$inputUsername.value){
-        alert('Preencha o nome do usuário!');
+       return alert('Preencha o nome do usuário!');
     }
     if(!$inputEmail.value){
-        alert('Preencha o e-mail!');
+       return alert('Preencha o e-mail!');
     }
     if(!$message.value){
-        alert('Preencha a mensagem!');
+       return alert('Preencha a mensagem!');
         
     }
-    if(!isValidEmail($inputEmail)){
-        alert('Entre com um e-mail válido!');
-        return;
+    if(!isValidEmail($inputEmail.value)){
+        return alert('Entre com um e-mail válido!');
+        
     }
     
     var confirmation = confirm('Tem certeza que deseja enviar o formulário?');
     
-    if(confirmation){
-        alert('Enviado com sucesso! :D');
+    if(!confirmation){
+        return  alert('Não enviado :c');
     }
-    else{
-        alert('Não enviado :c');
-    }
+    
+       return alert('Enviado com sucesso! :D');
+    
 
 });
 
@@ -144,7 +145,7 @@ Alguns e-mails inválidos:
 
 function isValidEmail(email){
 
-    var regex = /\w+?@[a-zA-Z]+?\.\w{2,3}.?\w{2,3}?/g;
+    var regex = /^[\w+.]+@[\w]+\.[\w]{2,}(?:\.\w{2})?$/g;
 
     return regex.test(email);
 
