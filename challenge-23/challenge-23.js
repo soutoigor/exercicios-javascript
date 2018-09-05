@@ -1,3 +1,5 @@
+(function(win, doc){
+
 /*
 Vamos desenvolver mais um projeto. A ideia é fazer uma mini-calculadora.
 As regras são:
@@ -16,6 +18,7 @@ digitado, como em uma calculadora real;
 - Ao pressionar um botão com uma das 4 operações, deve aparecer o símbolo da
 operação no input. Se o último caractere no input já for um símbolo de alguma
 operação, esse caractere deve ser substituído pelo último pressionado.
+
 Exemplo:
 - Se o input tem os valores: "1+2+", e for pressionado o botão de
 multiplicação (x), então no input deve aparecer "1+2x".
@@ -23,3 +26,17 @@ multiplicação (x), então no input deve aparecer "1+2x".
 input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
+
+
+var $numbers = doc.querySelectorAll('[data-js=numbers]');
+var $input = doc.querySelector('[data-js="input"]');
+
+$numbers.addEventListener('click', function(e){
+
+$input.value = e.target.value;
+
+});
+
+
+
+})(window, document);
