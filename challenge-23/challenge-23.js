@@ -28,14 +28,47 @@ input;
 */
 
 
-var $numbers = doc.querySelectorAll('[data-js=numbers]');
+var $numbers = doc.querySelectorAll('[data-js="numbers"]');
+var $operation = doc.querySelectorAll('[data-js="operation"]');
 var $input = doc.querySelector('[data-js="input"]');
+var $clear = doc.querySelector('[data-js="clear"]');
 
-$numbers.addEventListener('click', function(e){
+setNumbers();
+setOperations();
+clearCalc();
 
-$input.value = e.target.value;
+function setNumbers(){
+    for(var i = 0; i < $numbers.length; i++){
+        $numbers[i].addEventListener('click', function(e){
+            $input.value == '0' ? $input.value = e.target.value : $input.value += e.target.value; 
+        });
+    }
+}
 
-});
+
+function setOperations(){
+    for(var i = 0; i < $operation.length; i++ ){
+        $operation[i].addEventListener('click', function(e){
+            
+            
+            if(/[\/*\-+]$/.test($input.value)){
+                var replaceOperator = $input.value.split('');
+                replaceOperator[replaceOperator.length - 1] = e.target.value;
+                $input.value = replaceOperator.join('');
+            }
+            if(!/[\/*\-+]$/.test($input.value))  $input.value += e.target.value;
+            
+        });
+
+    }
+}
+
+
+function clearCalc(){
+    $clear.addEventListener('click', function(){
+        $input.value = '0';
+    });
+}
 
 
 
