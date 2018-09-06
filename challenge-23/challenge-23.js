@@ -32,10 +32,12 @@ var $numbers = doc.querySelectorAll('[data-js="numbers"]');
 var $operation = doc.querySelectorAll('[data-js="operation"]');
 var $input = doc.querySelector('[data-js="input"]');
 var $clear = doc.querySelector('[data-js="clear"]');
+var $calc = doc.querySelector('[data-js="calc"]');
 
 setNumbers();
 setOperations();
 clearCalc();
+setResult();
 
 function setNumbers(){
     for(var i = 0; i < $numbers.length; i++){
@@ -56,6 +58,7 @@ function setOperations(){
                 replaceOperator[replaceOperator.length - 1] = e.target.value;
                 $input.value = replaceOperator.join('');
             }
+            
             if(!/[\/*\-+]$/.test($input.value))  $input.value += e.target.value;
             
         });
@@ -67,6 +70,36 @@ function setOperations(){
 function clearCalc(){
     $clear.addEventListener('click', function(){
         $input.value = '0';
+    });
+}
+
+function setResult(){
+    $calc.addEventListener('click', function(){
+       /* var result = $input.value.split('');
+   
+        for(var i = 0; i < $input.value.length; i++){
+            console.log(result[i]);
+            if(result[i] == '+'){
+               result = +result[i - 1] + +result[i + 1];
+            }
+
+            if(result[i] == '-'){
+                result = +result[i - 1] - +result[i + 1];
+             }
+
+             if(result[i] == '*'){
+                result = +result[i - 1] * +result[i + 1];
+             }
+
+             if(result[i] == '/'){
+                result = +result[i - 1] / +result[i + 1];
+             }
+
+        }*/
+        
+
+       
+      $input.value = eval($input.value);
     });
 }
 
