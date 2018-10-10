@@ -75,31 +75,21 @@ function clearCalc(){
 
 function setResult(){
     $calc.addEventListener('click', function(){
-       /* var result = $input.value.split('');
-   
-        for(var i = 0; i < $input.value.length; i++){
-            console.log(result[i]);
-            if(result[i] == '+'){
-               result = +result[i - 1] + +result[i + 1];
-            }
+       
 
-            if(result[i] == '-'){
-                result = +result[i - 1] - +result[i + 1];
-             }
+        if(/[\/*\-+]$/.test($input.value)){
+            var replaceOperator = $input.value.split('');
+            replaceOperator.pop();
+            $input.value = replaceOperator.join('');
 
-             if(result[i] == '*'){
-                result = +result[i - 1] * +result[i + 1];
-             }
-
-             if(result[i] == '/'){
-                result = +result[i - 1] / +result[i + 1];
-             }
-
-        }*/
+            $input.value = eval($input.value);
+        }
+        
+        if(!/[\/*\-+]$/.test($input.value)) $input.value = eval($input.value);
         
 
        
-      $input.value = eval($input.value);
+      
     });
 }
 
