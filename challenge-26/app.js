@@ -1,13 +1,19 @@
 function DOM (nodeDom){
     this.element = document.querySelectorAll(nodeDom); 
-    this.on = function(event, action){
-        var el = this.element;
-        el.forEach(function(item){
-            return item.addEventListener(event, action, false);
-        });
-    }
-    this.off = function(event, action){
-        
-    }
   }
 
+  DOM.prototype.on = function(event, action){
+    Array.prototype.forEach.call(this.element, function(item){
+        return item.addEventListener(event, action, false);
+    });
+}
+
+DOM.prototype.off = function(event, action){
+    Array.prototype.forEach.call(this.element, function(item){
+        return item.removeEventListener(event, action, false);
+    });
+}
+
+DOM.prototype.get = function(){
+    return this.element;
+}

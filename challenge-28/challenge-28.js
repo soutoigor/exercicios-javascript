@@ -1,3 +1,5 @@
+  (function(){
+    'use strict';
   /*
   No HTML:
   - Crie um formulário com um input de texto que receberá um CEP e um botão
@@ -25,3 +27,58 @@
   - Utilize a lib DOM criada anteriormente para facilitar a manipulação e
   adicionar as informações em tela.
   */
+
+  var cep = new DOM('[data-js="cep"]');
+  var form = new DOM('[data-js="form"]');
+var $logradouro = new DOM('[data-js="logradouro"]');
+var $bairro = new DOM('[data-js="bairro"]');
+var $cidade = new DOM('[data-js="cidade"]');
+var $estado = new DOM('[data-js="estado"]');
+var $cepResposta = new DOM('[data-js="cepResposta"]');
+
+
+  function onlyNumber(number){
+    return number.replace( /[\D]/g, '' );
+  }
+
+  function requestAddress(cep){
+    var ajax = new XMLHttpRequest();
+    ajax.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/');
+    ajax.send();
+    showRequestStatus(ajax.readyState, ajax.status ,cep);
+    ajax.addEventListener('readystatechange', function(){
+      showRequestStatus(ajax.readyState, cep);
+        if( ajax.readyState === 4 && ajax.status === 200 ){
+            var address = JSON.parse(ajax.responseText);
+            completeAddress(address.logradouro, address.bairro, address.localidade, address.uf, address.cep);
+        }
+    });
+  }
+
+   function completeAddress(logradouro, bairro, cidade, estado, cep){
+       $logradouro.element[0].value = logradouro;
+       $bairro.element[0].value = bairro;
+       $cidade.element[0].value = cidade;
+       $estado.element[0].value = estado;
+       $cepResposta.element[0].value = cep;
+    }
+
+    function showRequestStatus(ajaxState, ajaxStatus ,cep){
+      var $status = new DOM('[data-js="status"]');
+
+      if(ajaxState === 1){
+      $status.element[0].textContent = 'Buscando informações para o CEP: ' + cep + '...'
+    }
+    if(ajaxStatus === 400){      
+      $status.element[0].textContent = 'Não encontramos o endereço para o CEP: ' +  + '.'
+      }
+    }
+      
+      
+form.on('submit', function(e){
+    e.preventDefault();
+    requestAddress(onlyNumber(cep.element[0].value));
+});
+      
+
+})()

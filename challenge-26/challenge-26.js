@@ -1,4 +1,5 @@
-
+(function(){
+  'use strict';
 /*
 O desafio dessa semana é criar uma mini library (biblioteca) para
 reutilizarmos nossos códigos quando fizermos manipulação de DOM!
@@ -30,8 +31,9 @@ $a.on('click', function(e) {
   console.log('clicou');
 });
 
-/*
+
 console.log('Elementos selecionados:', $a.get());
 console.log('$a é filho de body?', $a.get()[0].parentNode === document.body);
-*/
 
+
+})()
