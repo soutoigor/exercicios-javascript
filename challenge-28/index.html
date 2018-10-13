@@ -1,32 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 </head>
-<body>
-  
-  <form data-js="form" action="">
-    <input type="text" data-js="cep">
-    <button type="submit">Enviar</button>
-  </form>
-  
-<br><br>
 
-  <label >Logradouro</label>
-  <input type="text"  data-js="logradouro" ><br>
-  <label >Bairro</label>
-  <input type="text"  data-js="bairro" ><br>
-  <label >Cidade</label>
-  <input type="text"  data-js="cidade" ><br>
-  <label >Estado</label>
-  <input type="text"  data-js="estado" ><br>
-  <label >Cep</label>
-  <input type="text" data-js="cepResposta" ><br>
+<body class="teal lighten-5">
+    <div class="container ">
+        <div class="row">
+            <div class="col s12 center-align ">
+                <div class="row center-align ">
+                    <h1 style='color: #880e4f;'>Descubra o Endereço</h1>
+                    <h5>Informe o CEP e veja o endereço completo. </h5>
+                    <form class="col s12 center-align " data-js="form" action="">
+                        <div class="input-field">
+                            <input type="text" class="center-align" name="cep" data-js="cep">
+                            <label class="center-align" for="cep">Insira o CEP</label>
+                        </div>
+                        <button class="btn pink darken-4 waves-effect waves-light " type="submit">Pesquisar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-  <p data-js="status" ></p>
+        <div class="row">
+           
+                
+                  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+      <div class="modal-header">
+          <strong><p data-js="status"></p></strong>
+      </div>
+    <div class="modal-content">
 
-  <script src="app.js"></script>
-  <script src="challenge-28.js"></script>
+                <div class="preloader-wrapper small">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+      <table>
+            <tbody>
+                <tr>
+                    <th>Logradouro</th>
+                    <td data-js="logradouro"></td>
+                </tr>
+                <tr>
+                <th>Bairro</th>
+                <td data-js="bairro"></td>
+                </tr>
+                <tr>
+                <th>Cidade</th>
+                <td data-js="cidade"></td>
+                </tr>
+                <tr>
+                <th>Estado</th>
+                <td data-js="estado"></td>
+                </tr>
+                <tr>
+                <th>Cep</th>
+                <td data-js="cepResposta"></td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close center-align waves-effect waves-green">Ok!</a>
+    </div>
+  </div>
+                  
+            </div>
+        </div>
+        
+     
+
+
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="app.js"></script>
+    <script src="challenge-28.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
+
 </html>
