@@ -1,5 +1,5 @@
 (function(win, doc){
-
+    'use strict';
 /*
 Vamos desenvolver mais um projeto. A ideia é fazer uma mini-calculadora.
 As regras são:
@@ -40,7 +40,7 @@ clearCalc();
 setResult();
 
 function setNumbers(){
-    for(var i = 0; i < $numbers.length; i++){
+    for ( var i = 0; i < $numbers.length; i++ ){
         $numbers[i].addEventListener('click', function(e){
             $input.value == '0' ? $input.value = e.target.value : $input.value += e.target.value; 
         });
@@ -51,16 +51,14 @@ function setNumbers(){
 function setOperations(){
     for(var i = 0; i < $operation.length; i++ ){
         $operation[i].addEventListener('click', function(e){
-            
-            
+
             if(/[\/*\-+]$/.test($input.value)){
                 var replaceOperator = $input.value.split('');
                 replaceOperator[replaceOperator.length - 1] = e.target.value;
                 $input.value = replaceOperator.join('');
             }
-            
-            if(!/[\/*\-+]$/.test($input.value))  $input.value += e.target.value;
-            
+            if(!/[\/*\-+]$/.test($input.value))  
+                $input.value += e.target.value;
         });
 
     }
@@ -75,31 +73,9 @@ function clearCalc(){
 
 function setResult(){
     $calc.addEventListener('click', function(){
-       /* var result = $input.value.split('');
-   
-        for(var i = 0; i < $input.value.length; i++){
-            console.log(result[i]);
-            if(result[i] == '+'){
-               result = +result[i - 1] + +result[i + 1];
-            }
-
-            if(result[i] == '-'){
-                result = +result[i - 1] - +result[i + 1];
-             }
-
-             if(result[i] == '*'){
-                result = +result[i - 1] * +result[i + 1];
-             }
-
-             if(result[i] == '/'){
-                result = +result[i - 1] / +result[i + 1];
-             }
-
-        }*/
-        
-
-       
+               
       $input.value = eval($input.value);
+      
     });
 }
 
