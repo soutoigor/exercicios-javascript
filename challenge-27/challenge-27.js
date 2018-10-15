@@ -1,3 +1,4 @@
+
 /*
 Aproveitando a lib DOM que fizemos na semana anterior, crie agora para ela
 métodos semelhantes aos que existem no array, mas que sirvam para os
@@ -19,3 +20,16 @@ Crie os seguintes métodos para verificação de tipo:
 - isArray, isObject, isFunction, isNumber, isString, isBoolean, isNull.
 O método isNull deve retornar `true` se o valor for null ou undefined.
 */
+
+/*$a = new DOM('[data-js="link"]');
+
+$a.eachElement(function(item){
+    item.textContent = "funfou";
+});
+
+console.log(DOM().isArray([1,2,3]));*/
+
+var dom = new DOM();
+
+console.log(dom.isNull(null));
+

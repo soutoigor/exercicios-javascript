@@ -73,8 +73,25 @@ function clearCalc(){
 
 function setResult(){
     $calc.addEventListener('click', function(){
+<<<<<<< HEAD
                
       $input.value = eval($input.value);
+=======
+       
+
+        if(/[\/*\-+]$/.test($input.value)){
+            var replaceOperator = $input.value.split('');
+            replaceOperator.pop();
+            $input.value = replaceOperator.join('');
+
+            $input.value = eval($input.value);
+        }
+        
+        if(!/[\/*\-+]$/.test($input.value)) $input.value = eval($input.value);
+        
+
+       
+>>>>>>> ed6ccd5607b0cbbffe6834b432ac079191b56cad
       
     });
 }
