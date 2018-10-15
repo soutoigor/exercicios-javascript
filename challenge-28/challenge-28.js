@@ -30,9 +30,9 @@
       */
 
       var cep = new DOM('[data-js="cep"]');
-    cep = cep.get()[0].value;
       var form = new DOM('[data-js="form"]');
       var $logradouro = new DOM('[data-js="logradouro"]');
+      
       var $bairro = new DOM('[data-js="bairro"]');
       var $cidade = new DOM('[data-js="cidade"]');
       var $estado = new DOM('[data-js="estado"]');
@@ -53,7 +53,6 @@
           showRequestStatus(ajax.readyState, cep, false);
 
           ajax.addEventListener('readystatechange', function () {
-              console.log(ajax.status);
               showRequestStatus(ajax.readyState, cep, false);
               if (ajax.readyState === 4 && ajax.status === 200) {
                   var address = JSON.parse(ajax.responseText);
@@ -68,11 +67,11 @@
       }
 
       function completeAddress(logradouro, bairro, cidade, estado, cep) {
-          $logradouro.element[0].textContent = logradouro;
-          $bairro.element[0].textContent = bairro;
-          $cidade.element[0].textContent = cidade;
-          $estado.element[0].textContent = estado;
-          $cepResposta.element[0].textContent = cep;
+          $logradouro.get()[0].textContent = logradouro;
+          $bairro.get()[0].textContent = bairro;
+          $cidade.get()[0].textContent = cidade;
+          $estado.get()[0].textContent = estado;
+          $cepResposta.get()[0].textContent = cep;
       }
 
       function showRequestStatus(ajaxState, cep, isInvalid) {
@@ -95,9 +94,9 @@
 
       form.on('submit', function (e) {
           e.preventDefault();
-                  $('#modal1').modal('open');
-
-          requestAddress(onlyNumber(cep));
+          $('#modal1').modal('open');
+          
+          requestAddress(onlyNumber(cep.get()[0].value));
 
       });
       
@@ -107,12 +106,9 @@
          
         $('.modal').modal();
 
-        //now you can open modal from code
-
-        //or by click on trigger
         $('.trigger-modal').modal();
 
-    }); // end of document ready
+    }); 
 
 
   })()
