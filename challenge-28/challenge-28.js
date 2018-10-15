@@ -30,6 +30,7 @@
       */
 
       var cep = new DOM('[data-js="cep"]');
+    cep = cep.get()[0].value;
       var form = new DOM('[data-js="form"]');
       var $logradouro = new DOM('[data-js="logradouro"]');
       var $bairro = new DOM('[data-js="bairro"]');
@@ -37,19 +38,20 @@
       var $estado = new DOM('[data-js="estado"]');
       var $cepResposta = new DOM('[data-js="cepResposta"]');
 
+      var ajax = new XMLHttpRequest();
 
       function onlyNumber(number) {
           return number.replace(/[\D]/g, '');
       }
 
       function requestAddress(cep) {
-          var ajax = new XMLHttpRequest();
           ajax.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/');
           ajax.send();
 
 
 
           showRequestStatus(ajax.readyState, cep, false);
+
           ajax.addEventListener('readystatechange', function () {
               console.log(ajax.status);
               showRequestStatus(ajax.readyState, cep, false);
@@ -95,7 +97,7 @@
           e.preventDefault();
                   $('#modal1').modal('open');
 
-          requestAddress(onlyNumber(cep.element[0].value));
+          requestAddress(onlyNumber(cep));
 
       });
       
