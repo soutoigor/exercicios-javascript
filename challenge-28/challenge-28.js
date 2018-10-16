@@ -1,7 +1,6 @@
   (function () {
       'use strict';
-     
-      /*
+     /*
       No HTML:
       - Crie um formulário com um input de texto que receberá um CEP e um botão
       de submit;
@@ -33,46 +32,55 @@
       var form = new DOM('[data-js="form"]');
       var $logradouro = new DOM('[data-js="logradouro"]');
       
-      var $bairro = new DOM('[data-js="bairro"]');
-      var $cidade = new DOM('[data-js="cidade"]');
-      var $estado = new DOM('[data-js="estado"]');
-      var $cepResposta = new DOM('[data-js="cepResposta"]');
-
       var ajax = new XMLHttpRequest();
+      
+      
 
-      function onlyNumber(number) {
-          return number.replace(/[\D]/g, '');
-      }
+      function requestAddress() {
+        
+		conectViaCep();
 
-      function requestAddress(cep) {
-          ajax.open('GET', 'https://viacep.com.br/ws/' + cep + '/json/');
-          ajax.send();
-
-
-
-          showRequestStatus(ajax.readyState, cep, false);
-
+          showRequestStatus(ajax.readyState, cep.get()[0].value, false);
+		  
           ajax.addEventListener('readystatechange', function () {
-              showRequestStatus(ajax.readyState, cep, false);
-              if (ajax.readyState === 4 && ajax.status === 200) {
-                  var address = JSON.parse(ajax.responseText);
-                  if (!address.erro) {
-                      completeAddress(address.logradouro, address.bairro, address.localidade, address.uf, address.cep);
-                  } else {
-                      showRequestStatus(0, 0, true);
-                      completeAddress('', '', '', '', '');
-                  }
-              }
+			  
+		  showRequestStatus(ajax.readyState, cep.get()[0].value, false);
+			fillAddress();  
+			  
+			  
           });
       }
 
-      function completeAddress(logradouro, bairro, cidade, estado, cep) {
-          $logradouro.get()[0].textContent = logradouro;
-          $bairro.get()[0].textContent = bairro;
-          $cidade.get()[0].textContent = cidade;
-          $estado.get()[0].textContent = estado;
-          $cepResposta.get()[0].textContent = cep;
+      function fillAddress() {
+		  
+		  var data = parseData();
+		  
+		  if(!data)
+			  return;
+		  
+		  
+		  var $bairro = new DOM('[data-js="bairro"]');
+		  var $cidade = new DOM('[data-js="cidade"]');
+		  var $estado = new DOM('[data-js="estado"]');
+		  var $cepResposta = new DOM('[data-js="cepResposta"]');
+          $logradouro.get()[0].textContent = data.logradouro;
+          $bairro.get()[0].textContent = data.bairro;
+          $cidade.get()[0].textContent = data.localidade;
+          $estado.get()[0].textContent = data.uf;
+          $cepResposta.get()[0].textContent = data.cep;
       }
+	  
+	  function parseData(){
+		  var result;
+		  try{
+			  result = JSON.parse(ajax.responseText);
+		  }
+		  catch(e){
+			  result = null;
+		  }
+		  
+		  return result;
+	  }
 
       function showRequestStatus(ajaxState, cep, isInvalid) {
           var $status = new DOM('[data-js="status"]');
@@ -89,18 +97,27 @@
               document.querySelector('.preloader-wrapper').classList.remove("active");
               $status.element[0].textContent = 'Endereço referente ao CEP: ' + cep;
           }
-      }
-
-
-      form.on('submit', function (e) {
+      } 
+	  	  
+	function onlyNumber(number) {
+	  return number.get()[0].value.replace(/[\D]/g, '');
+	}
+          
+	  function conectViaCep(){
+			ajax.open('GET', 'https://viacep.com.br/ws/' + onlyNumber(cep) + '/json/');
+			ajax.send();
+	  }
+	  
+	  form.on('submit', function (e) {
           e.preventDefault();
           $('#modal1').modal('open');
           
-          requestAddress(onlyNumber(cep.get()[0].value));
+          requestAddress();
 
       });
-      
-      
+	  
+	  
+	  
        $(function () {
 
          
