@@ -1,3 +1,5 @@
+(function(){
+    'use strict';
 function DOM (elements){
     this.element = document.querySelectorAll(elements);
    
@@ -70,3 +72,10 @@ DOM.prototype.isNull =  function isNull(element){
     Object.prototype.toString.call(element) == '[object Undefined]'; 
 }
 
+$(function () {     
+    $('.modal').modal();
+    $('.trigger-modal').modal();
+}); 
+
+window.DOM = DOM;
+})()

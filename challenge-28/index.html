@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <title>Caça Endereço</title>
-    <!-- Compiled and minified CSS -->
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script
@@ -15,10 +15,9 @@
 </head>
 
 <body class="teal lighten-5">
-    <div class="container ">
-        <div class="row">
-            <div class="col s12 center-align ">
-                <div class="row center-align ">
+    <div class="container valign-wrapper" >
+        <div class="row center-align "  >
+            <div class="col s12 ">
                     <h1 style='color: #880e4f;'>Descubra o Endereço</h1>
                     <h5>Informe o CEP e veja o endereço completo. </h5>
                     <form class="col s12 center-align " data-js="form" action="">
@@ -37,7 +36,6 @@
         <div class="row">
            
                 
-                  <!-- Modal Structure -->
   <div id="modal1" style='overflow: hidden' class="modal">
     <div class="modal-content">
           <strong><h5 data-js="status"></h5></strong>
@@ -59,23 +57,23 @@
             <tbody>
                 <tr>
                     <th>Logradouro</th>
-                    <td data-js="logradouro"></td>
+                    <td data-js="logradouro"> -</td>
                 </tr>
                 <tr>
                 <th>Bairro</th>
-                <td data-js="bairro"></td>
+                <td data-js="bairro"> -</td>
                 </tr>
                 <tr>
                 <th>Cidade</th>
-                <td data-js="cidade"></td>
+                <td data-js="cidade"> -</td>
                 </tr>
                 <tr>
                 <th>Estado</th>
-                <td data-js="estado"></td>
+                <td data-js="estado"> -</td>
                 </tr>
                 <tr>
                 <th>Cep</th>
-                <td data-js="cepResposta"></td>
+                <td data-js="cepResposta"> -</td>
                 </tr>
                 
                 
@@ -89,16 +87,15 @@
   </div>
                   
             </div>
-        </div>
+</div>
         
      
 
 
 
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="app.js"></script>
-    <script src="challenge-28.js"></script>
+    <script src="DOM.js"></script>
+    <script src="getAddress.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
